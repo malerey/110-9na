@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import Blog from "./components/Blog"
+import Blog1 from "./components/Blog1"
+import Blog2 from "./components/Blog2"
+import Contacto from "./components/Contacto"
+import Home from "./components/Home"
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <BrowserRouter>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/blog">Blog</Link>
+        <Link to="/contacto">Contacto</Link>
+      </nav>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/blog/:variable" element={<Blog />} />
+          <Route path="/contacto" element={<Contacto />}/>
+        </Routes>
+
+        <footer>
+        {/* // links a paginas externas usan a */}
+          <a href="https://www.twitter.com">Visita mi twitter</a>
+        </footer>
+      </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
